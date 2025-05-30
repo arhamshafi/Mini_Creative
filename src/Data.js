@@ -3,12 +3,12 @@ export let Main_Data = [
     id: 1,
     about: "Table",
     detail: [
-      { img: "/table1.jpg", name: "Dinning_Table 01", price: 100, info: "Perfect for cozy indoor meals and family dinners" },
-      { img: "/table2.jpeg", name: "Dinning_Table 02", price: 200, info: "Crafted for elegance — built to last" },
-      { img: "/table3.jpeg", name: "Dinning_Table 03", price: 300, info: "Space-saving design with a modern touch" },
+      { img: "/tabel1.jpg", name: "Dinning_Table 01", price: 100, info: "Perfect for cozy indoor meals and family dinners" },
+      { img: "tabel2.jpeg", name: "Dinning_Table 02", price: 200, info: "Crafted for elegance — built to last" },
+      { img: "/tabel3.jpeg", name: "Dinning_Table 03", price: 300, info: "Space-saving design with a modern touch" },
       { img: "/table4.jpeg", name: "Dinning_Table 04", price: 400, info: "Premium wood finish for a timeless look" },
-      { img: "/table5.avif", name: "Dinning_Table 05", price: 500, info: "Strong build, smooth surface, and easy to clean" },
-      { img: "/table6.jpeg", name: "Dinning_Table 06", price: 600, info: "Blends seamlessly with any home décor" },
+      { img: "/tabel5.avif", name: "Dinning_Table 05", price: 500, info: "Strong build, smooth surface, and easy to clean" },
+      { img: "/tabel6.jpeg", name: "Dinning_Table 06", price: 600, info: "Blends seamlessly with any home décor" },
     ]
   },
   {
@@ -39,7 +39,7 @@ export let Main_Data = [
     id: 4,
     about: "Chair",
     detail: [
-      { img: "/chair1.webp", name: "Indoor_Chair 01", price: 100, info: "Designed for comfort, styled for elegance" },
+      { img: "/cahir1.webp", name: "Indoor_Chair 01", price: 100, info: "Designed for comfort, styled for elegance" },
       { img: "/chair2.webp", name: "Indoor_Chair 02", price: 200, info: "Perfect for bedrooms, studies, or cozy corners" },
       { img: "/chair3.jpeg", name: "Indoor_Chair 03", price: 300, info: "Compact yet luxurious — a perfect seat anywhere" },
       { img: "/chair4.jpg", name: "Indoor_Chair 04", price: 400, info: "Adds a modern touch to any indoor space" },

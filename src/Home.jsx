@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Main_Data } from "./Data";
-import { Sparkles, Search, Signature, CircleUserRound } from 'lucide-react';
+import { Sparkles, Search, Signature } from 'lucide-react';
 import { FaHeart } from "react-icons/fa";
 import { MdShoppingBag } from "react-icons/md";
 import { GiBarrel } from "react-icons/gi";
@@ -8,10 +8,30 @@ import { LuMoveLeft } from "react-icons/lu";
 import { LuMoveRight } from "react-icons/lu";
 import { PiStarFill } from "react-icons/pi";
 import { BsArrowUpRight } from "react-icons/bs";
+import Loader from './Loader';
 
 function Home() {
 
-    let data = Main_Data || null;
+    let [data, setdata] = useState(null)
+    console.log(data);
+
+
+    useEffect(() => {
+        let time = setTimeout(() => {
+            setdata(Main_Data || [])
+        }, 1500);
+        return () => {
+            clearTimeout(time)
+        }
+    }, [])
+
+    if (!data) {
+        return (
+            <div className='w-full flex justify-center items-center h-screen bg-white'>
+                <Loader />
+            </div>
+        )
+    }
 
     return (
         <div className="w-full h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center"
@@ -102,7 +122,7 @@ function Home() {
                                     <button className='py-1 px-3 bg-white/30 rounded-2xl tshw text-white text-sm cursor-pointer hover:bg-white/20 transition-all duration-200 ease-linear'>Our Team</button>
                                     <button className='w-[35px] h-[35px] bg-white/30 rounded-full flex justify-center items-center cursor-pointer text-white text-xl hover:bg-white/20 transition-all duration-200 ease-linear'><BsArrowUpRight /></button>
                                 </div>
-                                <p className='text-white/70 text-md cursor-context-menu tracking-[1px] mt-2'> Our Team Design Minimalist Modern Furniture </p>
+                                <p className='text-white/80 text-md cursor-context-menu tracking-[1px] mt-2'> Our Team Design Minimalist Modern Furniture </p>
                                 <div className='w-full h-[35px] flex justify-start items-center gap-2'>
                                     <div className='w-[30px] h-[30px] scale-100 hover:scale-110 transition-all duration-200 ease-linear bg-black/30 rounded-full overflow-hidden'><img className='w-full h-full' src="/adim2.png" alt="" /></div>
                                     <div className='w-[30px] h-[30px] scale-100 hover:scale-110 transition-all duration-200 ease-linear bg-black/30 rounded-full overflow-hidden'><img className='w-full h-full' src="/admin3.png" alt="" /></div>
@@ -125,7 +145,7 @@ function Home() {
                                     <button className='py-1 px-3 bg-white/30 rounded-2xl tshw cursor-pointer text-white text-sm hover:bg-white/20 transition-all duration-200 ease-linear'>Our Shop</button>
                                     <button className='w-[35px] h-[35px] bg-white/30 rounded-full flex justify-center cursor-pointer items-center hover:bg-white/20 transition-all duration-200 ease-linear text-white text-xl'><BsArrowUpRight /></button>
                                 </div>
-                                <p className='text-white text-[12px] w-[60%] mt-3'> Web Devrs , Office No. __ , 2nd Floor, IT . Tower , Main Boulevard, Gulberg III , Lahore, Punjab , Pakistan</p>
+                                <p className='text-white text-[12px] w-[60%] cursor-context-menu mt-3'> Web Devrs , Office No. __ , 2nd Floor, IT . Tower , Main Boulevard, Gulberg III , Lahore, Punjab , Pakistan</p>
                                 <div className='w-[40%] h-[90px] absolute bottom-[-2px] right-0 overflow-hidden'>
                                     <div className='w-[90px] h-[70px] bg-white absolute bottom-0 right-8 z-10 rounded-xl rotate-[-15deg] overflow-hidden'> <img className='w-full h-full' src="lawn_1.jpg" alt="" /> </div>
                                     <div className='w-[90px] h-[70px] bg-white absolute bottom-0 right-2 z-20 rounded-xl rotate-[-10deg] overflow-hidden'> <img className='w-full h-full' src="lawn2.jpg" alt="" /> </div>
