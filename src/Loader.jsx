@@ -4,85 +4,171 @@ import styled from 'styled-components';
 const Loader = () => {
   return (
     <StyledWrapper>
-      <div className="loader" />
+      <div className="superballs">
+        <div className="superballs__dot" />
+        <div className="superballs__dot" />
+      </div>
     </StyledWrapper>
   );
 }
 
 const StyledWrapper = styled.div`
-  .loader {
-   position: relative;
-   width: 2.5em;
-   height: 2.5em;
-   transform: rotate(165deg);
+  .superballs {
+    --uib-size: 45px;
+    --uib-speed: 1.1s;
+    --uib-color: #3b3b23;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--uib-size);
+    width: var(--uib-size);
   }
 
-  .loader:before, .loader:after {
-   content: "";
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   display: block;
-   width: 0.5em;
-   height: 0.5em;
-   border-radius: 0.25em;
-   transform: translate(-50%, -50%);
+  .superballs__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
   }
 
-  .loader:before {
-   animation: before8 2s infinite;
+  .superballs__dot::before {
+    content: '';
+    height: 30%;
+    width: 30%;
+    border-radius: 50%;
+    background-color: var(--uib-color);
+    will-change: transform;
+    flex-shrink: 0;
   }
 
-  .loader:after {
-   animation: after6 2s infinite;
+  .superballs__dot:nth-child(1) {
+    transform: rotate(45deg);
   }
 
-  @keyframes before8 {
-   0% {
-    width: 0.5em;
-    box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
-   }
-
-   35% {
-    width: 2.5em;
-    box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75), 0 0.5em rgba(111, 202, 220, 0.75);
-   }
-
-   70% {
-    width: 0.5em;
-    box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75), 1em 0.5em rgba(111, 202, 220, 0.75);
-   }
-
-   100% {
-    box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
-   }
+  .superballs__dot:nth-child(1)::before {
+    animation: orbit82140 var(--uib-speed) linear calc(var(--uib-speed) * -0.143)
+      infinite;
   }
 
-  @keyframes after6 {
-   0% {
-    height: 0.5em;
-    box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
-   }
-
-   35% {
-    height: 2.5em;
-    box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75), -0.5em 0 rgba(233, 169, 32, 0.75);
-   }
-
-   70% {
-    height: 0.5em;
-    box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75), -0.5em 1em rgba(233, 169, 32, 0.75);
-   }
-
-   100% {
-    box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
-   }
+  .superballs__dot:nth-child(2) {
+    transform: rotate(-45deg);
   }
 
-  .loader {
-   position: absolute;
-   top: calc(50% - 1.25em);
-   left: calc(50% - 1.25em);
+  .superballs__dot:nth-child(2)::before {
+    animation: orbit82140 var(--uib-speed) linear calc(var(--uib-speed) / -2)
+      infinite;
+  }
+
+  @keyframes orbit82140 {
+    0% {
+      transform: translate(calc(var(--uib-size) * 0.5)) scale(0.73684);
+      opacity: 0.65;
+    }
+
+    5% {
+      transform: translate(calc(var(--uib-size) * 0.4)) scale(0.684208);
+      opacity: 0.58;
+    }
+
+    10% {
+      transform: translate(calc(var(--uib-size) * 0.3)) scale(0.631576);
+      opacity: 0.51;
+    }
+
+    15% {
+      transform: translate(calc(var(--uib-size) * 0.2)) scale(0.578944);
+      opacity: 0.44;
+    }
+
+    20% {
+      transform: translate(calc(var(--uib-size) * 0.1)) scale(0.526312);
+      opacity: 0.37;
+    }
+
+    25% {
+      transform: translate(0%) scale(0.47368);
+      opacity: 0.3;
+    }
+
+    30% {
+      transform: translate(calc(var(--uib-size) * -0.1)) scale(0.526312);
+      opacity: 0.37;
+    }
+
+    35% {
+      transform: translate(calc(var(--uib-size) * -0.2)) scale(0.578944);
+      opacity: 0.44;
+    }
+
+    40% {
+      transform: translate(calc(var(--uib-size) * -0.3)) scale(0.631576);
+      opacity: 0.51;
+    }
+
+    45% {
+      transform: translate(calc(var(--uib-size) * -0.4)) scale(0.684208);
+      opacity: 0.58;
+    }
+
+    50% {
+      transform: translate(calc(var(--uib-size) * -0.5)) scale(0.73684);
+      opacity: 0.65;
+    }
+
+    55% {
+      transform: translate(calc(var(--uib-size) * -0.4)) scale(0.789472);
+      opacity: 0.72;
+    }
+
+    60% {
+      transform: translate(calc(var(--uib-size) * -0.3)) scale(0.842104);
+      opacity: 0.79;
+    }
+
+    65% {
+      transform: translate(calc(var(--uib-size) * -0.2)) scale(0.894736);
+      opacity: 0.86;
+    }
+
+    70% {
+      transform: translate(calc(var(--uib-size) * -0.1)) scale(0.947368);
+      opacity: 0.93;
+    }
+
+    75% {
+      transform: translate(0%) scale(1);
+      opacity: 1;
+    }
+
+    80% {
+      transform: translate(calc(var(--uib-size) * 0.1)) scale(0.947368);
+      opacity: 0.93;
+    }
+
+    85% {
+      transform: translate(calc(var(--uib-size) * 0.2)) scale(0.894736);
+      opacity: 0.86;
+    }
+
+    90% {
+      transform: translate(calc(var(--uib-size) * 0.3)) scale(0.842104);
+      opacity: 0.79;
+    }
+
+    95% {
+      transform: translate(calc(var(--uib-size) * 0.4)) scale(0.789472);
+      opacity: 0.72;
+    }
+
+    100% {
+      transform: translate(calc(var(--uib-size) * 0.5)) scale(0.73684);
+      opacity: 0.65;
+    }
   }`;
 
 export default Loader;

@@ -37,14 +37,253 @@
         transform: translateX(4px);
     }
 }
-.tshw{
+
+.tshw {
     text-shadow: .1px .1px 2px white;
 }
 
-/* 
+.nav_1 {
+    animation: nav_1 .7s forwards ease;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.nav_2 {
+    animation: nav_1 .7s forwards ease .2s;
+    transform: translateY(-50px);
+    opacity: 0;
+
+}
+
+.nav_3 {
+    animation: nav_1 .7s forwards ease .4s;
+    transform: translateY(-50px);
+    opacity: 0;
+
+}
+
+.nav_4 {
+    animation: nav_1 .7s forwards ease .6s;
+    transform: translateY(-50px);
+    opacity: 0;
+
+}
+
+.nav_5 {
+    animation: nav_1 .7s forwards ease .8s;
+    transform: translateY(-50px);
+    opacity: 0;
+
+}
+
+.nav_6 {
+    animation: nav_1 .7s forwards ease 1s;
+    transform: translateY(-50px);
+    opacity: 0;
+
+}
 
 
-aniamtion ka styl center-scale bottom ransform thekn left or right with ease 
-header
+@keyframes nav_1 {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
 
-*/
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.nav_7 {
+    animation: scale .7s forwards ease 1.5s;
+    transform: scale(.5);
+    opacity: 0;
+}
+
+.li_anime {
+    transform: scale(.5);
+    opacity: 0;
+    animation: scale .7s forwards ease 2s;
+}
+
+@keyframes scale {
+    from {
+        transform: scale(.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.anime_9 {
+    transform: translateY(150px);
+    opacity: 0;
+    animation: anime_9 .7s forwards ease 2.5s;
+}
+
+@keyframes anime_9 {
+    from {
+        opacity: 0;
+        transform: translateY(150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.anime_10 {
+    transform: translateX(-200px);
+    opacity: 0;
+    animation: anime_10 .7s forwards ease 2.8s;
+}
+
+@keyframes anime_10 {
+    from {
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.box_1 {
+    transform: translateX(200px);
+    opacity: 0;
+    animation: box_1 .7s forwards ease 3s;
+}
+
+.box_2 {
+    transform: translateX(200px);
+    opacity: 0;
+    animation: box_1 .7s forwards ease 3.2s;
+}
+
+.box_3 {
+    transform: translateX(200px);
+    opacity: 0;
+    animation: box_1 .7s forwards ease 3.4s;
+}
+
+@keyframes box_1 {
+    from {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.cat_box {
+    animation: cat_box .5s ease forwards 1s;
+    transform: translateY(-150px);
+    opacity: 0;
+}
+
+.cat_box:nth-child(2) {
+    animation: cat_box .5s ease forwards 1.2s;
+    transform: translateY(-150px);
+    opacity: 0;
+}
+
+.cat_box:nth-child(3) {
+    animation: cat_box .5s ease forwards 1.4s;
+    transform: translateY(-150px);
+    opacity: 0;
+}
+
+.cat_box:nth-child(4) {
+    animation: cat_box .5s ease forwards 1.6s;
+    transform: translateY(-150px);
+    opacity: 0;
+}
+
+.cat_box:nth-child(5) {
+    animation: cat_box .5s ease forwards 1.8s;
+    transform: translateY(-150px);
+    opacity: 0;
+}
+
+.cat_box:nth-child(6) {
+    animation: cat_box .5s ease forwards 2s;
+    transform: translateY(-150px);
+    opacity: 0;
+}
+
+@keyframes cat_box {
+    from {
+        transform: translateY(-150px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+.text_anime{
+    transform: scale(.7);
+    animation: text_anime .5s ease forwards 2.2s;
+    opacity: 0;
+}
+@keyframes text_anime{
+    from{
+        transform: scale(.7);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.textanime_2{   
+    transform: translateX(40px);
+    opacity: 0;
+    animation: textanime_2 .7s ease forwards 2.7s ;
+}
+@keyframes textanime_2{
+    from{
+        transform: translateX(40px);
+    opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+    opacity: 1;
+    }
+}
+.bl_anime1, .bl_anime2, .bl_anime3, .bl_anime4 {
+  opacity: 0;
+  transform: translateY(25px);
+}
+.bl_anime:hover .bl_anime1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: .3s;
+}
+.bl_anime:hover .bl_anime2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: .6s;
+}
+.bl_anime:hover .bl_anime3 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: .9s;
+}
+.bl_anime:hover .bl_anime4 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s;
+}

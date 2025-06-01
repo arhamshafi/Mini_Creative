@@ -4,7 +4,7 @@ export let Main_Data = [
     about: "Table",
     detail: [
       { img: "/tabel1.jpg", name: "Dinning_Table 01", price: 100, info: "Perfect for cozy indoor meals and family dinners" },
-      { img: "tabel2.jpeg", name: "Dinning_Table 02", price: 200, info: "Crafted for elegance — built to last" },
+      { img: "/tabel2.jpeg", name: "Dinning_Table 02", price: 200, info: "Crafted for elegance — built to last" },
       { img: "/tabel3.jpeg", name: "Dinning_Table 03", price: 300, info: "Space-saving design with a modern touch" },
       { img: "/table4.jpeg", name: "Dinning_Table 04", price: 400, info: "Premium wood finish for a timeless look" },
       { img: "/tabel5.avif", name: "Dinning_Table 05", price: 500, info: "Strong build, smooth surface, and easy to clean" },

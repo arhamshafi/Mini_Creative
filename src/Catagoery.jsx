@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Main_Data } from "./Data";
 import { Sparkles, Search, Signature } from 'lucide-react';
 import { FaHeart } from "react-icons/fa";
@@ -7,13 +7,32 @@ import { GiBarrel } from "react-icons/gi";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { HiMiniShoppingCart } from "react-icons/hi2";
 import { FaEye } from "react-icons/fa6";
+import { Link, useParams } from 'react-router-dom';
+import Loader from './Loader';
 
 function Catagoery() {
 
-    let data = Main_Data || null;
+    let { id } = useParams()
+    let data = Main_Data.find(ele => ele.id === parseInt(id))
+    let [load, setload] = useState(false)
 
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            setload(true)
+        }, 1500)
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [])
 
-
+    // if (!load) {
+    //     return (
+    //         <div className='w-full flex-col flex justify-center items-center h-screen bg-white'>
+    //             <Loader />
+    //             <h1 className='text-md text-gray-600 mt-12 '>👀 Keep Calm ...</h1>
+    //         </div>
+    //     )
+    // }
     return (
         <div className="w-full h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center"
             style={{ backgroundImage: "url('/bgimg.jpg')" }}>
@@ -21,32 +40,34 @@ function Catagoery() {
                 <div className='w-full h-full bg-black/40 py-1'>
                     <div className='w-full h-[35px] mt-3 px-5 flex justify-between items-center'>
                         <div className='w-max h-max items-center flex'>
-                            <div className='px-3 h-[30px] rounded-2xl bg-black/40 flex justify-center items-center gap-2'>
+                            <div className='px-3 h-[30px] rounded-2xl bg-black/40 flex justify-center items-center nav_1 gap-2'>
                                 <Sparkles size={16} className='text-white' /><p className='text-white text-sm cursor-context-menu select-none'>MODELA</p></div>
-                            <div className='w-[400px] h-[30px] ml-5 relative'>
-                                <input type="text" className='w-full pl-4 pr-10 outline-0 text-white h-full rounded-2xl text-sm bg-black/40' />
+                            <div className='w-[400px] h-[30px] ml-5 relative nav_2'>
+                                <input type="text" placeholder='Search Here' className='w-full pl-4 pr-10 outline-0 text-white h-full rounded-2xl text-sm bg-black/40' />
                                 <div className='absolute  text-white right-0 top-0 rounded-2xl cursor-pointer bg-white/20 w-[30px] h-full flex justify-center items-center'><Search size={18} /></div>
                             </div>
                         </div>
                         <div className='w-max h-max flex items-center'>
-                            <div className='px-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px]'>
-                                <Signature size={16} className='text-white' /><p className='text-white text-sm cursor-context-menu select-none '>App</p></div>
-                            <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-red-600'><FaHeart /></div>
-                            <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white'><MdShoppingBag /></div>
-                            <div className='w-[135px] h-[30px] flex items-center gap-2 bg-black/40 rounded-2xl ml-3 relative select-none cursor-context-menu'>
+                            <div className='px-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] nav_6'>
+                                <Signature size={16} className='text-white' /><p className='text-white text-sm cursor-context-menu select-none'>App</p></div>
+                            <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-red-600 nav_5'><FaHeart /></div>
+                            <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white nav_4'><MdShoppingBag /></div>
+                            <div className='w-[135px] h-[30px] flex items-center gap-2 bg-black/40 rounded-2xl ml-3 relative select-none cursor-context-menu nav_3'>
                                 <p className='text-sm text-white ml-3 '>Arham Shafi</p>
                                 <div className='w-[30px] bg-black/40 rounded-2xl h-[30px] absolute top-0 right-0 '> <img className='w-full' src="/admin.png" alt="" /> </div>
                             </div>
                         </div>
                     </div>
                     {/* //////////////// */}
-                    <div className='w-full h-[30px] mt-3 px-5 flex justify-center items-center gap-3 relative' >
-                        <div className='w-[30px] h-[30px] rounded-full bg-black/40 flex justify-center items-center text-white'><GiBarrel /></div>
-                        <h1 className='text-white select-none cursor-context-menu '>Selected Category : </h1>
-                        <button className='py-1 px-3 group rounded-2xl flex items-center cursor-pointer gap-1 bg-black absolute left-6 text-sm text-white'>
-                            <MdOutlineKeyboardBackspace className='group-hover:opacity-100 text-lg opacity-0 transition-all duration-200 ease-linear' />
-                            <p className='translate-x-[-10px] group-hover:translate-x-0 transition-all duration-200 ease-out'>Back</p>
-                        </button>
+                    <div className='w-full h-[30px] mt-3 px-5 flex justify-center items-center gap-3  relative' >
+                        <div className='w-[30px] h-[30px] rounded-full bg-black/40 flex justify-center text_anime items-center text-white'><GiBarrel /></div>
+                        <h1 className='text-white select-none cursor-context-menu text_anime '>Selected Category : <span className='text-yellow-400 text-xl ml-2 font-bold tracking-[1px]'>{data.about}</span> </h1>
+                        <Link to={"/"} className='absolute left-6 '>
+                            <button className='py-1 px-3 group rounded-2xl textanime_2 flex items-center cursor-pointer gap-1 bg-black text-sm text-white'>
+                                <MdOutlineKeyboardBackspace className='group-hover:opacity-100 text-lg opacity-0 transition-all duration-200 ease-linear' />
+                                <p className='translate-x-[-10px] group-hover:translate-x-0 transition-all duration-200 ease-out'>Back</p>
+                            </button>
+                        </Link>
                     </div>
                     {/* ////////////////// */}
                     <div
@@ -58,23 +79,23 @@ function Catagoery() {
                         }}
                     >
                         {
-                            data[3].detail.map((ele, idx) => {
+                            data?.detail?.map((ele, idx) => {
                                 return (
-                                    <div key={idx} className='w-[32%] group h-[48%] p-3 flex justify-center items-center bg-black/50 rounded-2xl mt-2'>
-                                        <div className=' w-[90%] h-[80%] overflow-hidden rounded-2xl'>
+                                    <div key={idx} className='w-[30%] group bl_anime p-4 h-[45%] flex justify-center items-center bg-black/50 rounded-2xl mt-3 cat_box'>
+                                        <div className=' w-[100%] h-[100%] overflow-hidden rounded-2xl'>
                                             <div className='w-full h-full group-hover:scale-110 relative transition-all duration-200 ease-linear rounded-2xl overflow-hidden bg-center bg-cover bg-no-repeat' style={{ backgroundImage: `url(${ele.img})` }}>
-                                                  <div className='absolute bg-black/80 w-full h-full opacity-0 z-10 group-hover:opacity-100 transition-all duration-200 ease-linear flex justify-center items-center gap-2 flex-col'>
-                                                       <p className='text-white font-bold cursor-context-menu tracking-[1px]'>{ele.name}</p> 
-                                                       <p className='text-green-500 font-bold cursor-context-menu tracking-[1px]'>{ele.price} $</p> 
-                                                       {/*  */}
-                                                       {/*  */}
-                                                       <div className='w-[100px] h-[30px] text-white flex gap-3 transition-all duration-300 ease-in text-lg justify-center translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 items-center'>
-                                                        <HiMiniShoppingCart className='cursor-pointer transition-all duration-200 hover:text-yellow-600 ease-linear'/>
-                                                        <FaEye className='cursor-pointer transition-all duration-200 ease-linear hover:text-yellow-600'/>
-                                                       </div>
-                                                  </div>
+                                                <div className='absolute bg-black/70 w-full h-full opacity-0 z-10 group-hover:opacity-100 transition-all duration-200 ease-linear flex justify-center items-center gap-2 flex-col'>
+                                                    <p className='text-white font-bold cursor-context-menu transition-all duration-300 ease-in-out bl_anime1 tracking-[1px] hover:bl_anime1 '>🌟{ele.name}🌟</p>
+                                                    <p className='text-green-500 font-bold cursor-context-menu bl_anime2 transition-all duration-300 ease-in-out tracking-[1px]'>💸 {ele.price} $</p>
+                                                    {/*  */}
+                                                    {/*  */}
+                                                    <div className='w-[100px] h-[30px] text-white flex gap-3  text-lg justify-center items-center'>
+                                                        <HiMiniShoppingCart className='cursor-pointer transition-all  bl_anime3 duration-30 text-yellow-400 ease-in-out' />
+                                                        <FaEye className='cursor-pointer transition-all duration-300 ease-in-out bl_anime4 text-yellow-400' />
+                                                    </div>
+                                                </div>
                                             </div>
-                                      
+
                                         </div>
                                     </div>
                                 )
