@@ -233,57 +233,65 @@
         opacity: 1;
     }
 }
-.text_anime{
+
+.text_anime {
     transform: scale(.7);
     animation: text_anime .5s ease forwards 2.2s;
     opacity: 0;
 }
-@keyframes text_anime{
-    from{
+
+@keyframes text_anime {
+    from {
         transform: scale(.7);
         opacity: 0;
     }
-    to{
+
+    to {
         transform: scale(1);
         opacity: 1;
     }
 }
-.textanime_2{   
+
+.textanime_2 {
     transform: translateX(40px);
     opacity: 0;
-    animation: textanime_2 .7s ease forwards 2.7s ;
+    animation: textanime_2 .7s ease forwards 2.7s;
 }
-@keyframes textanime_2{
-    from{
+
+@keyframes textanime_2 {
+    from {
         transform: translateX(40px);
-    opacity: 0;
+        opacity: 0;
     }
-    to{
+
+    to {
         transform: translateX(0);
-    opacity: 1;
+        opacity: 1;
     }
 }
-.bl_anime1, .bl_anime2, .bl_anime3, .bl_anime4 {
-  opacity: 0;
-  transform: translateY(25px);
+
+.bl_anime1,
+.bl_anime2,
+.bl_anime3,
+.bl_anime4 {
+    opacity: 0;
+    transform: translateY(25px);
 }
+
 .bl_anime:hover .bl_anime1 {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: .3s;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .3s;
 }
+
 .bl_anime:hover .bl_anime2 {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: .6s;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .6s;
 }
+
 .bl_anime:hover .bl_anime3 {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: .9s;
-}
-.bl_anime:hover .bl_anime4 {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 1s;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .9s;
 }

@@ -10,7 +10,7 @@ import { FaEye } from "react-icons/fa6";
 import { Link, useParams } from 'react-router-dom';
 import Loader from './Loader';
 
-function Catagoery() {
+function Catagoery({ setcart }) {
 
     let { id } = useParams()
     let data = Main_Data.find(ele => ele.id === parseInt(id))
@@ -25,14 +25,14 @@ function Catagoery() {
         }
     }, [])
 
-    // if (!load) {
-    //     return (
-    //         <div className='w-full flex-col flex justify-center items-center h-screen bg-white'>
-    //             <Loader />
-    //             <h1 className='text-md text-gray-600 mt-12 '>👀 Keep Calm ...</h1>
-    //         </div>
-    //     )
-    // }
+    if (!load) {
+        return (
+            <div className='w-full flex-col flex justify-center items-center h-screen bg-white'>
+                <Loader />
+                <h1 className='text-md text-gray-600 mt-12 '>👀 Keep Calm ...</h1>
+            </div>
+        )
+    }
     return (
         <div className="w-full h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center"
             style={{ backgroundImage: "url('/bgimg.jpg')" }}>
@@ -51,7 +51,7 @@ function Catagoery() {
                             <div className='px-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] nav_6'>
                                 <Signature size={16} className='text-white' /><p className='text-white text-sm cursor-context-menu select-none'>App</p></div>
                             <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-red-600 nav_5'><FaHeart /></div>
-                            <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white nav_4'><MdShoppingBag /></div>
+                            <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white nav_4 cursor-pointer' onClick={() => setcart(true)}><MdShoppingBag /></div>
                             <div className='w-[135px] h-[30px] flex items-center gap-2 bg-black/40 rounded-2xl ml-3 relative select-none cursor-context-menu nav_3'>
                                 <p className='text-sm text-white ml-3 '>Arham Shafi</p>
                                 <div className='w-[30px] bg-black/40 rounded-2xl h-[30px] absolute top-0 right-0 '> <img className='w-full' src="/admin.png" alt="" /> </div>
@@ -90,8 +90,8 @@ function Catagoery() {
                                                     {/*  */}
                                                     {/*  */}
                                                     <div className='w-[100px] h-[30px] text-white flex gap-3  text-lg justify-center items-center'>
-                                                        <HiMiniShoppingCart className='cursor-pointer transition-all  bl_anime3 duration-30 text-yellow-400 ease-in-out' />
-                                                        <FaEye className='cursor-pointer transition-all duration-300 ease-in-out bl_anime4 text-yellow-400' />
+                                                        <HiMiniShoppingCart className='cursor-pointer transition-all  bl_anime3 duration-300 text-yellow-400 ease-in-out' />
+                                                        <FaEye className='cursor-pointer transition-all duration-300 ease-in-out bl_anime3 text-yellow-400' />
                                                     </div>
                                                 </div>
                                             </div>

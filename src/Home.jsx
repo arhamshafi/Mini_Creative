@@ -11,11 +11,11 @@ import { BsArrowUpRight } from "react-icons/bs";
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
 
-function Home() {
+function Home({setcart }) {
 
     let data = Main_Data
-     
-    let [load , setload] = useState(false)
+
+    let [load, setload] = useState(false)
     useEffect(() => {
         let timer = setTimeout(() => {
             setload(true)
@@ -52,7 +52,8 @@ function Home() {
                             <div className='px-3 flex justify-center items-center nav_6 gap-2 bg-black/40 rounded-2xl h-[30px]'>
                                 <Signature size={16} className='text-white' /><p className='text-white text-sm cursor-context-menu select-none '>App</p></div>
                             <div className='w-[30px] ml-3 flex justify-center nav_5 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-red-600'><FaHeart /></div>
-                            <div className='w-[30px] ml-3 flex justify-center nav_4 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white'><MdShoppingBag /></div>
+                            <div className='w-[30px] ml-3 flex justify-center nav_4 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white cursor-pointer' onClick={() => setcart(true)} ><MdShoppingBag /></div>
+
                             <div className='w-[135px] h-[30px] flex nav_3 items-center gap-2 bg-black/40 rounded-2xl ml-3 relative select-none cursor-context-menu'>
                                 <p className='text-sm text-white ml-3'>Arham Shafi</p>
                                 <div className='w-[30px] bg-black/40 rounded-2xl h-[30px] absolute top-0 right-0 '> <img className='w-full' src="/admin.png" alt="" /> </div>
