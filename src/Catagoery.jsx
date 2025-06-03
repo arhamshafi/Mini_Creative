@@ -14,7 +14,7 @@ import { appContext } from './Context';
 
 function Catagoery({ setcart }) {
 
-    let { dispatch } = useContext(appContext);
+    let { dispatch, setadded, state } = useContext(appContext);
     let { id } = useParams()
     let data = Main_Data.find(ele => ele.id === parseInt(id))
     let [load, setload] = useState(false)
@@ -65,7 +65,11 @@ function Catagoery({ setcart }) {
                             <div className='px-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] nav_6'>
                                 <Signature size={16} className='text-white' /><p className='text-white text-sm cursor-context-menu select-none'>App</p></div>
                             <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-red-600 nav_5'><FaHeart /></div>
-                            <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white nav_4 cursor-pointer' onClick={() => dispatch({ type: 'open_cart' })}><MdShoppingBag /></div>
+                            <div className='w-[30px] ml-3 flex justify-center items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white nav_4 cursor-pointer relative'
+                                onClick={() => dispatch({ type: 'open_cart' })}><MdShoppingBag />
+                                <div className={`w-[8px] rounded-full ${state.cartItems.length > 0 ? "visible" : "invisible"} h-[8px] bg-yellow-500 absolute top-[-2px] right-0`}></div>
+                                <div className={`w-[10px] rounded-full ${state.cartItems.length > 0 ? "visible" : "invisible"} h-[10px] bg-yellow-500 absolute top-[-3px] dotNIme right-[-1px]`}></div>
+                            </div>
                             <div className='w-[135px] h-[30px] flex items-center gap-2 bg-black/40 rounded-2xl ml-3 relative select-none cursor-context-menu nav_3'>
                                 <p className='text-sm text-white ml-3 '>Arham Shafi</p>
                                 <div className='w-[30px] bg-black/40 rounded-2xl h-[30px] absolute top-0 right-0 '> <img className='w-full' src="/admin.png" alt="" /> </div>
@@ -100,11 +104,11 @@ function Catagoery({ setcart }) {
                                             <div className='w-full h-full group-hover:scale-110 relative transition-all duration-200 ease-linear rounded-2xl overflow-hidden bg-center bg-cover bg-no-repeat' style={{ backgroundImage: `url(${ele.img})` }}>
                                                 <div className='absolute bg-black/70 w-full h-full opacity-0 z-10 group-hover:opacity-100 transition-all duration-200 ease-linear flex justify-center items-center gap-2 flex-col'>
                                                     <p className='text-white font-bold cursor-context-menu transition-all duration-300 ease-in-out bl_anime1 tracking-[1px] hover:bl_anime1 '>🌟{ele.name}🌟</p>
-                                                    <p className='text-green-500 font-bold cursor-context-menu bl_anime2 transition-all duration-300 ease-in-out tracking-[1px]'>💸 {ele.price} $</p>
+                                                    <p className='text-green-500 font-bold cursor-context-menu bl_anime2 transition-all duration-300 ease-in-out tracking-[1px]'>💸 {ele.price}</p>
                                                     {/*  */}
                                                     {/*  */}
                                                     <div className='w-[100px] h-[30px] text-white flex gap-3  text-lg justify-center items-center'>
-                                                        <HiMiniShoppingCart className='cursor-pointer transition-all  bl_anime3 duration-300 text-yellow-400 ease-in-out' onClick={() => add_item(ele, idx)} />
+                                                        <HiMiniShoppingCart className='cursor-pointer transition-all  bl_anime3 duration-300 text-yellow-400 ease-in-out' onClick={() => { add_item(ele, idx), setadded(true) }} />
                                                         <FaEye className='cursor-pointer transition-all duration-300 ease-in-out bl_anime3 text-yellow-400' />
                                                     </div>
                                                 </div>

@@ -15,7 +15,7 @@ import { appContext } from './Context';
 
 function Home() {
 
-     const { dispatch } = useContext(appContext);
+    const { dispatch, state } = useContext(appContext);
     let data = Main_Data
 
     let [load, setload] = useState(false)
@@ -55,7 +55,11 @@ function Home() {
                             <div className='px-3 flex justify-center items-center nav_6 gap-2 bg-black/40 rounded-2xl h-[30px]'>
                                 <Signature size={16} className='text-white' /><p className='text-white text-sm cursor-context-menu select-none '>App</p></div>
                             <div className='w-[30px] ml-3 flex justify-center nav_5 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-red-600'><FaHeart /></div>
-                            <div className='w-[30px] ml-3 flex justify-center nav_4 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white cursor-pointer'  onClick={() => dispatch({ type: 'open_cart' })} ><MdShoppingBag /></div>
+                            <div className='w-[30px] ml-3 flex justify-center nav_4 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white cursor-pointer relative'
+                                onClick={() => dispatch({ type: 'open_cart' })} ><MdShoppingBag />
+                                <div className={`w-[8px] rounded-full ${state.cartItems.length > 0 ? "visible" : "invisible"} h-[8px] bg-yellow-500 absolute top-[-2px] right-0`}></div>
+                                <div className={`w-[10px] rounded-full ${state.cartItems.length > 0 ? "visible" : "invisible"} h-[10px] bg-yellow-500 absolute top-[-3px] dotNIme right-[-1px]`}></div>
+                            </div>
 
                             <div className='w-[135px] h-[30px] flex nav_3 items-center gap-2 bg-black/40 rounded-2xl ml-3 relative select-none cursor-context-menu'>
                                 <p className='text-sm text-white ml-3'>Arham Shafi</p>

@@ -285,19 +285,19 @@
 .bl_anime:hover .bl_anime1 {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: .3s;
+    transition-delay: .2s;
 }
 
 .bl_anime:hover .bl_anime2 {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: .6s;
+    transition-delay: .3s;
 }
 
 .bl_anime:hover .bl_anime3 {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: .9s;
+    transition-delay: .5s;
 }
 
 
@@ -320,4 +320,18 @@
 .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
+}
+.dotNIme{
+    animation: dotNIme .8s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes dotNIme{
+    from{
+        opacity: 1;
+        transform: scale(1);
+    }
+    to{
+        transform: scale(2);
+        opacity: 0;
+    }
 }

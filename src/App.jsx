@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Catagoery from './Catagoery';
@@ -10,17 +10,35 @@ import { appContext, CartProvider } from './Context';
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { FaCartArrowDown } from "react-icons/fa";
+import { IoMdAddCircle } from "react-icons/io";
 
 function CartModal() {
-  const { state, dispatch } = useContext(appContext);
+  let { state, dispatch, added, setadded } = useContext(appContext);
 
-  function quantity_change( clicked_items , updated_quantity ){
-      dispatch( {type : "quantity_change" , payload : { item : clicked_items , quan : updated_quantity } })
+  function quantity_change(clicked_items, updated_quantity) {
+    dispatch({ type: "quantity_change", payload: { item: clicked_items, quan: updated_quantity } })
   }
-  
+
+  useEffect(() => {
+    let pop = setTimeout(() => {
+      setadded(false)
+    }, 1000);
+    return () => {
+      clearTimeout(pop)
+    }
+  }, [added])
+
 
   return (
     <>
+
+      <div className={`fixed  left-1/2 transform -translate-x-1/2 cursor-context-menu transition-all duration-300 ease-in-out 
+  ${added ? "opacity-100 visible top-10 " : "opacity-0 invisible top-4"} 
+  bg-black text-white flex items-center gap-2 px-4 py-2 w-fit rounded-lg z-20 shadow-lg`}>
+
+        <IoMdAddCircle className='text-green-500 text-xl' />
+        <p className='text-sm font-medium'>Successfully Added</p>
+      </div>
       <div className={`fixed top-0 ${state.isCartOpen ? "visible opacity-100" : "invisible opacity-0"} transition-all duration-300 ease-linear  left-0 bg-black/60 w-full h-full`} onClick={() => dispatch({ type: 'close_cart' })}></div>
       <div className={`w-full h-[350px]  ${state.isCartOpen ? "bottom-0" : "bottom-[-350px]"} bg-yellow-900/95 p-3 fixed left-0 transition-all duration-300 ease-in-out`}>
 
@@ -52,14 +70,14 @@ function CartModal() {
                           <div className='w-[80px] rounded-xl  h-[80px] overflow-hidden'><img className='w-full group-hover:scale-110 transition-all duration-200 ease-linear h-full' src={ele.img} alt="" /></div>
                           <div className='w-[200px] rounded-xl h-[90%] '>
                             <p className='text-md mt-1 cursor-context-menu text-black'>{ele.name}</p>
-                            <p className='text-sm mt-2 cursor-context-menu text-black/50'>$ {ele.price}</p>
+                            <p className='text-sm mt-2 cursor-context-menu text-black/50'>$ {ele.price} (each) </p>
                             <div className='w-max flex justify-start items-center gap-3 text-sm mt-1'>
-                              <FaMinus className='cursor-pointer select-none hover:text-red-700' onClick={() => quantity_change(ele , ele.quantity - 1) } />
+                              <FaMinus className='cursor-pointer select-none hover:text-red-700' onClick={() => quantity_change(ele, ele.quantity - 1)} />
                               <p className='cursor-context-menu text-lg select-none'>{ele.quantity}</p>
-                              <FaPlus className='cursor-pointer select-none hover:text-green-700' onClick={() => quantity_change(ele , ele.quantity + 1) } />
+                              <FaPlus className='cursor-pointer select-none hover:text-green-700' onClick={() => quantity_change(ele, ele.quantity + 1)} />
                             </div>
                           </div>
-                          <FaXmark className='absolute top-2 hover:text-red-700 cursor-pointer right-2' onClick={()=>dispatch({ type : "del" , payload : ele.un_id })} />
+                          <FaXmark className='absolute top-2 hover:text-red-700 cursor-pointer right-2' onClick={() => dispatch({ type: "del", payload: ele.un_id })} />
                         </div>
                       ))
                     }
