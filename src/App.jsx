@@ -14,14 +14,10 @@ import { FaCartArrowDown } from "react-icons/fa";
 function CartModal() {
   const { state, dispatch } = useContext(appContext);
 
-  function incr_quanity(item) {
-    let update = state.cartItems.map(cartItem =>
-      cartItem.un_id === item.un_id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
-    )
-    dispatch({ type: "quantity_change", payload: update })
+  function quantity_change( clicked_items , updated_quantity ){
+      dispatch( {type : "quantity_change" , payload : { item : clicked_items , quan : updated_quantity } })
   }
+  
 
   return (
     <>
@@ -52,25 +48,25 @@ function CartModal() {
                   <div className='w-full h-[230px] mt-5 px-2 py-2 flex justify-start gap-2 flex-wrap overflow-auto custom-scrollbar '>
                     {
                       state.cartItems.map((ele, idx) => (
-                        <div key={idx} className='w-[322px] h-[100px] rounded-2xl group bg-white/50 flex justify-center items-center gap-5 relative'>
+                        <div key={idx} className='w-[322px] select-none h-[100px] rounded-2xl group bg-white/50 flex justify-center items-center gap-5 relative'>
                           <div className='w-[80px] rounded-xl  h-[80px] overflow-hidden'><img className='w-full group-hover:scale-110 transition-all duration-200 ease-linear h-full' src={ele.img} alt="" /></div>
                           <div className='w-[200px] rounded-xl h-[90%] '>
                             <p className='text-md mt-1 cursor-context-menu text-black'>{ele.name}</p>
                             <p className='text-sm mt-2 cursor-context-menu text-black/50'>$ {ele.price}</p>
                             <div className='w-max flex justify-start items-center gap-3 text-sm mt-1'>
-                              <FaMinus className='cursor-pointer select-none hover:text-red-700' />
+                              <FaMinus className='cursor-pointer select-none hover:text-red-700' onClick={() => quantity_change(ele , ele.quantity - 1) } />
                               <p className='cursor-context-menu text-lg select-none'>{ele.quantity}</p>
-                              <FaPlus className='cursor-pointer select-none hover:text-green-700' onClick={() => incr_quanity(ele)} />
+                              <FaPlus className='cursor-pointer select-none hover:text-green-700' onClick={() => quantity_change(ele , ele.quantity + 1) } />
                             </div>
                           </div>
-                          <FaXmark className='absolute top-2 hover:text-red-700 cursor-pointer right-2' />
+                          <FaXmark className='absolute top-2 hover:text-red-700 cursor-pointer right-2' onClick={()=>dispatch({ type : "del" , payload : ele.un_id })} />
                         </div>
                       ))
                     }
                   </div>
                 </div>
 
-                <div className='absolute bottom-0 text-white right-3 w-[200px] h-[30px] m-0 cursor-context-menu font-bold tshw tracking-[1px] flex justify-start items-center gap-2'>
+                <div className='absolute bottom-0 select-none text-white right-3 w-[200px] h-[30px] m-0 cursor-context-menu font-bold tshw tracking-[1px] flex justify-start items-center gap-2'>
                   <p >Total Price : </p>
                   <p className='text-green-500 tshg '>$ {state.total_amount} </p>
                 </div>

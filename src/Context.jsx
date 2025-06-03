@@ -55,11 +55,23 @@ function cartReducer(state, action) {
                 return calculation(update, state)
             }
 
-        case "quantity_change":
-            let update = action.payload
-            console.log(update);
-            // Yahan return statement missing tha
+        case "quantity_change": {
+
+            let { item, quan } = action.payload
+            let update
+            if (quan <= 0) {
+                update = state.cartItems.filter(ele => ele.un_id !== item.un_id)
+            }
+            else {
+                update = state.cartItems.map(ele => ele.un_id === item.un_id ? { ...ele, quantity: quan } : ele)
+            }
+            return calculation(update, state);
+        }
+
+        case "del":
+            let update = state.cartItems.filter(ele => ele.un_id !== action.payload)
             return calculation(update, state)
+
 
         default:
             return state;
