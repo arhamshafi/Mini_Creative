@@ -42,6 +42,10 @@
     text-shadow: .1px .1px 2px white;
 }
 
+.tshg {
+    text-shadow: .1px .1px 2px green;
+}
+
 .nav_1 {
     animation: nav_1 .7s forwards ease;
     transform: translateY(-50px);
@@ -294,4 +298,26 @@
     opacity: 1;
     transform: translateY(0);
     transition-delay: .9s;
+}
+
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 1px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
 }

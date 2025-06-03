@@ -10,9 +10,12 @@ import { PiStarFill } from "react-icons/pi";
 import { BsArrowUpRight } from "react-icons/bs";
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { appContext } from './Context';
 
-function Home({setcart }) {
+function Home() {
 
+     const { dispatch } = useContext(appContext);
     let data = Main_Data
 
     let [load, setload] = useState(false)
@@ -25,14 +28,14 @@ function Home({setcart }) {
         }
     }, [])
 
-    if (!load) {
-        return (
-            <div className='w-full flex-col flex justify-center items-center h-screen bg-white'>
-                <Loader />
-                <h1 className='text-md text-gray-600 mt-12 '>loading...🙇‍♂️</h1>
-            </div>
-        )
-    }
+    // if (!load) {
+    //     return (
+    //         <div className='w-full flex-col flex justify-center items-center h-screen bg-white'>
+    //             <Loader />
+    //             <h1 className='text-md text-gray-600 mt-12 '>loading...🙇‍♂️</h1>
+    //         </div>
+    //     )
+    // }
 
     return (
         <div className="w-full h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center"
@@ -52,7 +55,7 @@ function Home({setcart }) {
                             <div className='px-3 flex justify-center items-center nav_6 gap-2 bg-black/40 rounded-2xl h-[30px]'>
                                 <Signature size={16} className='text-white' /><p className='text-white text-sm cursor-context-menu select-none '>App</p></div>
                             <div className='w-[30px] ml-3 flex justify-center nav_5 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-red-600'><FaHeart /></div>
-                            <div className='w-[30px] ml-3 flex justify-center nav_4 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white cursor-pointer' onClick={() => setcart(true)} ><MdShoppingBag /></div>
+                            <div className='w-[30px] ml-3 flex justify-center nav_4 items-center gap-2 bg-black/40 rounded-2xl h-[30px] text-white cursor-pointer'  onClick={() => dispatch({ type: 'open_cart' })} ><MdShoppingBag /></div>
 
                             <div className='w-[135px] h-[30px] flex nav_3 items-center gap-2 bg-black/40 rounded-2xl ml-3 relative select-none cursor-context-menu'>
                                 <p className='text-sm text-white ml-3'>Arham Shafi</p>
