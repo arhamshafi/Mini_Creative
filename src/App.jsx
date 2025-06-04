@@ -47,8 +47,9 @@ function CartModal() {
         {
           state.cartItems.length === 0 ? (
             <div className='w-full h-full flex justify-center items-center flex-col gap-2 cursor-context-menu'>
-              <FaCartArrowDown className='text-white/80 text-6xl' />
-              <h1 className='capitalize text-xl tracking-[1px] font-bold text-white/80'>No haven't add any item</h1>
+              <FaCartArrowDown className='text-white/50 text-6xl' />
+              <h1 className='capitalize text-xl tracking-[1px] font-bold text-white'>No any items in cart</h1>
+              <p className='capitalize text-white/50'>⚓ this cart does not currently have any wishlist ⚓ </p>
               <button className='py-1 px-2 bg-black text-white tracking-[1px] rounded-lg mt-4 active:scale-95 transition-all duration-200 ease-linear cursor-pointer shadow-lg'
                 onClick={() => dispatch({ type: "close_cart" })} >Close</button>
             </div>
